@@ -1,0 +1,181 @@
+#include <iostream>
+#include<cstring>
+using namespace std;
+
+class Node
+{
+	private :
+				string name;
+				Node *left;
+				Node *right;
+	public : 
+				Node()
+				{
+					right=left=NULL;
+				}
+				
+				Node(string name)
+				{
+					this->name=name;
+					//right=left=NULL;
+				}
+				
+				friend class tree;
+};
+
+class tree
+{
+	private : 
+	
+	public :   Node *root;
+	
+	             tree()
+	             {
+	             	root=NULL;
+	             }
+	             
+	             void insert(string name)
+                 {
+                 	Node *newnode=new Node;
+                 	newnode->name=name;
+                 	
+                 	if(root==NULL)
+                 	{
+                 		root=newnode;
+                 	}
+                 	else
+                 	{
+                 		Node *temp=root;
+                 		Node *pre=NULL;
+                 		
+                 		if(temp!=NULL)
+                 		{
+                 			pre=temp;
+                 			
+                 		      	temp=temp->left;
+                 			
+                 			   // temp=temp->left;
+                 			    temp=temp->right;
+                 		}
+                 		
+                 		else
+                 		{
+                 		//	if(count==1)
+                 			    pre->left=newnode;
+                 			//if(count==2)
+                 			///	pre->left=newnode;
+                 				pre->right=newnode;
+                 		}
+                 	}
+                 }
+                 
+                 
+                  Node* findParent(string name){
+        Node *temp = root;
+        while( temp != NULL){
+
+            if( temp->left != NULL ){
+                if( name == temp->left->name)
+                    return temp;
+
+
+            }
+            if( temp->right() != NULL ){
+                if( name == temp->right->name)
+                    return temp;
+
+
+            }
+            if( data < temp->getData() )
+                temp = temp->getLeft();
+            else 
+                temp = temp->getRight();
+        } 
+        return NULL;    
+    }
+
+    Node* search(string name){
+        Node *temp = root;
+        while( temp != NULL){
+            if( temp->name == name){
+                return temp;           
+            }
+            else{
+                int i=0;
+                if(temp->left!=NULL)
+                {
+                    i++;
+                 temp = temp->left;
+                 return temp;
+                }
+                if(temp->right!=NULL)
+                {
+                  i+2;
+                  temp = temp->right;
+                  return temp;
+                }
+        } 
+        return NULL;
+    }
+                 
+                 int print(string name)
+                 {
+                 	int invalid=0;
+                 	Node *temp=root;
+                 	Node *newnode=new Node;
+                 	newnode->name=name;
+                 	
+                 	if(temp->root==newnode)
+                 	{
+                 		if(temp->left!=NULL)
+                 		{
+                 			if(temp->left ==newnode|| temp->right==newnode)
+                 			{
+                 				invalid=1;
+                 				cout<<"Yes"<<endl;
+                 				return 1;
+                 			}
+                 			else
+                 			{
+                 				invalid=0;
+                 				cout<<"No"<<endl;
+                 				return 0;
+                 			}
+                 		}
+                 		
+                 		if(temp->left!=NULL)
+                 		{
+                 			if(temp->left==newnode || temp->right==newnode)
+                 			{
+                 				invalid=1;
+                 				cout<<"Yes"<<endl;
+                 				return 1;
+                 			}
+                 			else
+                 			{
+                 				invalid=0;
+                 				cout<<"No"<<endl;
+                 				return 0;
+                 			}
+                 		
+                 		}
+                 	}
+                 }
+
+	
+};
+
+
+
+int main()
+{    
+	tree t;
+	string name;
+	cin>>name;
+	int count;
+	cin>>count;
+	t.insert(name,count);
+	t.print(name);
+	
+	return 0;
+}
