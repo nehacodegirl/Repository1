@@ -2,26 +2,6 @@
 #include<cstring>
 using namespace std;
 
-class Node
-{
-	private :
-				string name;
-				Node *left;
-				Node *right;
-	public : 
-				Node()
-				{
-					right=left=NULL;
-				}
-				
-				Node(string name)
-				{
-					this->name=name;
-					//right=left=NULL;
-				}
-				
-				friend class tree;
-};
 
 class tree
 {
